@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Croppatron Demo UI</title>
+    <link rel="stylesheet" href="stylesheets/styles.css"/>
+    <link rel="stylesheet" href="stylesheets/semantic.min.css"/>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root">
+    <div class="ui container">
+        <div class="search-bar ui segment">
+            <form id="search-form" class="ui form">
+                <div class="field">
+                    <label for="search-input">Image Search</label>
+                    <input id="search-input" type="text"/>
+                </div>
+            </form>
+        </div>
+        <div class="ui grid">
+            <div id="image-list" class="twelve wide column"></div>
+            <div id="selected-panel" class="four wide column" style="visibility: hidden">
+                <h3>Selected Images</h3>
+                <div id="selected-list" class="ui list"></div>
+                <div class="ui buttons">
+                    <button id="cancel-button" class="ui button" aria-pressed="false">Cancel</button>
+                    <div class="or"></div>
+                    <button id="submit-button" class="ui positive button" aria-pressed="false">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template id="imageList-template">
+    <div class="image-list ui two column grid">
+        <div class="row"></div>
+    </div>
+</template>
+<template id="imageCard-template">
+    <div class="column">
+        <div class="ui segment">
+            <div class="ui image dimmable" data-type="dimmer">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <button class="ui huge primary button"
+                                aria-pressed="false">
+                            Add
+                        </button>
+                        <a class="ui huge button"
+                           href=""
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View
+                        </a>
+                    </div>
+                </div>
+                <img src=""/>
+            </div>
+        </div>
+    </div>
+</template>
+</body>
+<footer>
+    <script src="scripts/lodash.min.js"></script>
+    <script src="scripts/index.js"></script>
+</footer>
+
+</html>

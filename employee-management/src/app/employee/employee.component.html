@@ -1,0 +1,49 @@
+<p>
+  employee works!
+</p>
+<table border="1">
+  <thead></thead>
+  <tr>
+    <th>name</th>
+    <th>designation</th>
+  </tr>
+  <tbody>
+      <tr *ngFor="let employee of employees">
+          <td>{{employee.name}}</td>
+          <td>{{employee.designation}}</td>
+      </tr>
+  </tbody>
+</table>
+
+<div class="container">
+
+  <h2>New record:</h2> 
+  <form [formGroup]="employeeForm"  (ngSubmit)="save()">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+  <br />
+  <label>
+      Designation:
+      <input type="text" formControlName="designation">
+    </label>
+    <br />
+    <label>
+        Salary:
+        <input type="text" formControlName="salary">
+      </label>
+      <button type="submit"
+              >Save</button>
+    </form>
+    
+<br />
+  <p>
+    Employee name: {{ formControls.name.value }}
+    <br />
+    Designation/Position {{ formControls.designation.value }}
+    <br />
+    Salary {{ formControls.salary.value }}
+  </p>
+
+</div>
