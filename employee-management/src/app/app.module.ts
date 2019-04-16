@@ -13,7 +13,7 @@ import { EmployeeComponent } from './employee/employee.component';
     EmployeeComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule

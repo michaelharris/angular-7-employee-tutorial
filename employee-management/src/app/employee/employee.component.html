@@ -18,7 +18,7 @@
 <div class="container">
 
   <h2>New record:</h2> 
-  <form [formGroup]="employeeForm"  (ngSubmit)="save()">
+  <form action="somewhere" [formGroup]="employeeForm"  (ngSubmit)="save()">
   <label>
     Name:
     <input type="text" formControlName="name">
@@ -46,4 +46,5 @@
     Salary {{ formControls.salary.value }}
   </p>
 
+  <div><h3>Status: {{ statusInfo }}</h3></div>
 </div>

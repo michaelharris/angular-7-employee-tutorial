@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from '../service/http-client.service';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
+import {  Router, ActivatedRoute }   from '@angular/router';
 
 import { Employee } from '../employee';
 
@@ -18,11 +19,12 @@ export class EmployeeComponent implements OnInit {
   designation = new FormControl('');
   employeeForm: FormGroup;
   isSubmitted  =  false;
+  statusInfo = ''
 
 
   constructor(
-    private httpClientService:HttpClientService
-  , private formBuilder: FormBuilder){  }
+    private httpClientService:HttpClientService, private formBuilder: FormBuilder, private route:  ActivatedRoute,
+    private router: Router){  }
 
   ngOnInit() {
     this.httpClientService.getEmployees().subscribe(
@@ -53,8 +55,14 @@ save() {
     }
   this.httpClientService.save(this.employeeForm.value).subscribe(result => {
     console.log('saved employee')
+    this.employees.push(this.employeeForm.value)
     //this.gotoList();
-  }, error => console.error(error));
+    this.router.navigate(['../employees'], {relativeTo: this.route});
+    this.statusInfo = 'OK'
+  }, error => {
+    console.error(error)
+    this.statusInfo = error.error
+  })
 }
 
 }

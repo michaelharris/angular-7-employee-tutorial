@@ -3,11 +3,12 @@ package mh.test.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mh.test.model.Employee;
@@ -22,17 +23,18 @@ public class EmployeeController {
 	public List<Employee> employees() {
 		return employees;
 	}
-	
-	
+
 	@RequestMapping(value = "/employees", method = RequestMethod.POST, produces = "application/json")
-	public void addEmployee(@RequestBody Employee employee) {
-		
+	public ResponseEntity<String> addEmployee(@RequestBody Employee employee) {
+
+		if (employee.getSalary() < 10) {
+			return new ResponseEntity<>("Below minimum wage", HttpStatus.BAD_REQUEST);
+		} else {
 			System.out.println("Received a new employee: " + employee.getName());
 			employees.add(employee);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
 	}
-	
-	
-	
 
 	private static List<Employee> createList() {
 		List<Employee> tempEmployees = new ArrayList<>();

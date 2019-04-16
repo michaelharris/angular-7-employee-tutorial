@@ -17,7 +17,7 @@ export class HttpClientService {
     return this.httpClient.get<Employee[]>(`${this.apiURL}/employees`);
 }
 
-save(employee: Employee): Observable<Employee> {
+save(employee: Employee): Observable<Object> {
   let result: Observable<Object>;
   
     result = this.httpClient.post(`${this.apiURL}/employees`, employee);
